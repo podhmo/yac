@@ -1,5 +1,6 @@
 (define-module yac.vector
   (use srfi-43)
+  (use yac.alias)
   (export fill! rcopy! copy! swap! reverse!
           every any 
           skipr skip indexr index 
@@ -10,24 +11,18 @@
           empty?
           concat append
           copy rcopy
-          rvector rlist list 
+          from-rlist from-list rlist list 
           set! ref 
           unfoldr unfold 
           make init))
-
 (select-module yac.vector)
-
-;;;alias
-(define %length (with-module scheme length))
-(define %map (with-module scheme map))
-(define %fold (with-module gauche fold))
 
 ;;; create
 (define (init n :optional (fn identity))
   (rlet1 v (make-vector n)
     (dotimes (i n) (vector-set! v i (fn i)))))
 
-(define make make-list)
+(define make make-vector)
 (define unfold vector-unfold)
 (define unfoldr vector-unfold-right)
 
@@ -38,7 +33,8 @@
 ;;; convert
 (define list vector->list)
 (define rlist reverse-vector->list)
-(define rvector reverse-list->vector)
+(define from-rlist reverse-list->vector)
+(define from-list list->vector)
 (define rcopy vector-reverse-copy)
 (define copy vector-copy)
 
@@ -46,9 +42,6 @@
 (define append vector-append)
 (define concat vector-concatenate) ;; quicker than apply append
 
-;;; pred
-(define empty? vector-empty?)
-;; (define = vector=) ;;dangerours!!
 
 ;;; iterate
 
@@ -133,6 +126,8 @@
 (define skipr vector-skip-right) ;;
 
 ;;; predicate
+(define empty? vector-empty?)
+;; (define = vector=) ;;dangerours!!
 (define any vector-any)
 (define every vector-every)
 

@@ -24,4 +24,10 @@
 (test* "foldl" '((3 . 30) (2 . 20) (1 . 10) (0 . 0))
        (v.foldl (lambda (r x y) (acons x y r))
                 '() (v.init 4) (v.init 4 (cut * <> 10))))
+
+(test* "from-list" '#(1 2) (v.from-list '(1 2)))
+(test* "list" '(1 2) (v.list #(1 2)))
+
 (test-end)
+
+(module-exports (find-module 'yac.vector))
