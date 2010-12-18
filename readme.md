@@ -19,6 +19,7 @@ yac.vector
     (v.map (cut * <> 10) (v.init 3)) ; => #(0 10 20)
     (v.foldl (lambda (r x) (cons x r)) '() (v.init 3)) ; => '(2 1 0)    
     (v.foldl xcons '() (v.init 3)) ; => '(2 1 0)
+
     ;;convert
     (v.list #(1 2)) ; => (1 2)
     (v.from-list '(1 2)) ; => #(1 2)
@@ -26,7 +27,7 @@ yac.vector
 yac.hash-table
 --------------
 
-    (use yac.hashtable)
+    (use yac.hashtable :prefix ht.)
 
     (let* ((alist '((1 . 2) (3 . 4) (5 . 6)))
            (ht (ht.from-alist alist 'eqv?)))
