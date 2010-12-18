@@ -1,6 +1,19 @@
 (define-module yac.vector
   (use srfi-43)
-  (export-all))
+  (export fill! rcopy! copy! swap! reverse!
+          every any 
+          skipr skip indexr index 
+          binary-search
+          map!
+          count length
+          foldr/index foldl foldl/index map/index map each/index each
+          empty?
+          concat append
+          copy rcopy
+          rvector rlist list 
+          set! ref 
+          unfoldr unfold 
+          make init))
 
 (select-module yac.vector)
 
