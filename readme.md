@@ -1,9 +1,9 @@
-yac = yet another collection
+yac = yet another collection (interface for scheme)
 ===========================
 
 experiment
 
-yac.list
+yac.vector
 --------
 
     (use yac.vector :prefix v.)
