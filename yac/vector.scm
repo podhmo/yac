@@ -14,10 +14,19 @@
           from-rlist from-list rlist list 
           set! ref 
           unfoldr unfold 
-          make init))
+          make init range))
 (select-module yac.vector)
 
 ;;; create
+(define (range from to :optional (d 1))
+  (let* ((n (if (= d 1) (- to from) (ceiling->exact (/. (- to from) d))))
+         (v (make-vector n)))
+    (let loop ((i 0) (val from))
+      (unless (>= i n)
+        (vector-set! v i val)
+        (loop (+ i 1) (+ val d))))
+    v))
+
 (define (init n :optional (fn identity))
   (rlet1 v (make-vector n)
     (dotimes (i n) (vector-set! v i (fn i)))))

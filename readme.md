@@ -13,6 +13,8 @@ yac.vector
     ;;create    
     (v.init 3) ; => #(0 1 2)
     (v.init 3 (lambda (x) (* x x))) ; => #(0 1 4)
+    (v.range 8 10))  ; => #(8 9)
+    (v.range 1 10 3) ; => #(1 4 7)
 
     ;;iteration
     (with-output-to-string (cute v.each print (v.init 3))) ; => "0\n1\n2\n"

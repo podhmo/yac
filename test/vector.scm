@@ -11,6 +11,10 @@
 (test-section "create")
 
 (test* "init" '#(0 1 2) (v.init 3 identity))
+
+(test* "range" #(8 9) (v.range 8 10)) 
+(test* "range" #(1 4 7) (v.range 1 10 3)) 
+
 (test* "each" "01234" 
        (with-output-to-string (cute v.each display (v.init 5 identity))))
 (test* "each" "00\n11\n22\n33\n44\n"
