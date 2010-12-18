@@ -43,3 +43,21 @@ yac.hash-table
       (ht.set! table "foo" "bar")
       (list (ht.keys table) (ht.values table) (ht.length table)))
      ; => (("foo") ("bar") 1)
+
+ordinary hash-table
+---------------
+
+    (use util.list :only (alist->hash-table hash-table->alist))
+
+    (let* ((alist '((1 . 2) (3 . 4) (5 . 6)))
+          (ht (hash-table->alist alist 'eqv?)))
+          (hash-table-put ht 100 100)
+          (hash-table-update! ht (cut * 10 <>))
+          (hash-table-delete! ht 5)
+          (sort-by (hash-table->alist ht) car))
+
+    (let1 table (make-hash-table 'string=?)
+          (hash-table-put table "foo" "bar")
+          (list (hash-table-get table) (hash-table-values table) (hash-table-num-entries table)))
+
+大して変わらないかな…
