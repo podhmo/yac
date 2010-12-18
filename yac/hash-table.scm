@@ -43,6 +43,8 @@
                    (lambda (k v r) (kons r k v))
                    knil))
 
+(define length hash-table-num-entries)
+
 ;;; predicate
 (define exists? hash-table-exists?)
 

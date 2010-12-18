@@ -35,3 +35,8 @@ yac.hash-table
       (ht.delete! ht 5)
       (sort-by (ht.alist ht) car))
      ; => ((1 . 2) (3 . 40) (100 . 100))
+     
+    (let1 table (ht.make 'string=?)
+      (ht.set! table "foo" "bar")
+      (list (ht.keys table) (ht.values table) (ht.length table)))
+     ; => (("foo") ("bar") 1)

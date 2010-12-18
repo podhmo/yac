@@ -47,4 +47,10 @@
          (ht.update! ht 3 (cut * 10 <>))
          (ht.delete! ht 5)
          (sort-by (ht.alist ht) car)))
-       ;; (test-end)
+
+(test* "length,make" '(("foo") ("bar") 1)
+       (let1 table (ht.make 'string=?)
+         (ht.set! table "foo" "bar")
+         (list (ht.keys table) (ht.values table) (ht.length table))))
+(test-end)
+
