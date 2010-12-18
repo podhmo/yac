@@ -1,7 +1,7 @@
-(use srfi-1)
 (use gauche.experimental.lamb)
 (add-load-path "../")
 (use yac.vector :prefix v.)
+(use yac.util :only (xcons))
 (use gauche.test)
 
 ;; #?=(module-exports (find-module 'yac.vector))
